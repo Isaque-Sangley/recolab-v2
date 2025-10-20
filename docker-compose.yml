@@ -1,0 +1,135 @@
+version: '3.8'
+
+services:
+  # ==========================================
+  # API Service
+  # ==========================================
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: recolab-api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://recolab:recolab123@postgres:5432/recolab
+      - REDIS_URL=redis://redis:6379/0
+      - ENVIRONMENT=production
+      - LOG_LEVEL=INFO
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./logs:/app/logs
+      - ./models:/app/models
+    networks:
+      - recolab-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # ==========================================
+  # PostgreSQL Database
+  # ==========================================
+  postgres:
+    image: postgres:15-alpine
+    container_name: recolab-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=recolab
+      - POSTGRES_PASSWORD=recolab123
+      - POSTGRES_DB=recolab
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - recolab-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U recolab -d recolab"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==========================================
+  # Redis Cache
+  # ==========================================
+  redis:
+    image: redis:7-alpine
+    container_name: recolab-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes --requirepass recolab123
+    volumes:
+      - redis-data:/data
+    networks:
+      - recolab-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==========================================
+  # PgAdmin (Database Management UI)
+  # ==========================================
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: recolab-pgadmin
+    restart: unless-stopped
+    ports:
+      - "5050:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@recolab.com
+      - PGADMIN_DEFAULT_PASSWORD=admin123
+      - PGADMIN_CONFIG_SERVER_MODE=False
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    networks:
+      - recolab-network
+    depends_on:
+      - postgres
+
+  # ==========================================
+  # Redis Commander (Redis Management UI)
+  # ==========================================
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: recolab-redis-commander
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    environment:
+      - REDIS_HOSTS=local:redis:6379:0:recolab123
+    networks:
+      - recolab-network
+    depends_on:
+      - redis
+
+# ==========================================
+# Networks
+# ==========================================
+networks:
+  recolab-network:
+    driver: bridge
+    name: recolab-network
+
+# ==========================================
+# Volumes
+# ==========================================
+volumes:
+  postgres-data:
+    name: recolab-postgres-data
+  redis-data:
+    name: recolab-redis-data
+  pgadmin-data:
+    name: recolab-pgadmin-data
