@@ -4,7 +4,7 @@
 
 ### Sistema Avançado de Recomendação de Filmes com Deep Learning
 
-[![CI Pipeline](https://github.com/SEU_USERNAME/recolab-v2/actions/workflows/ci.yml/badge.svg)](https://github.com/SEU_USERNAME/recolab-v2/actions/workflows/ci.yml)
+[![CI Pipeline](https://github.com/Isaque-Sangley/recolab-v2/actions/workflows/ci.yml/badge.svg)](https://github.com/Isaque-Sangley/recolab-v2/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/SEU_USERNAME/recolab-v2/branch/main/graph/badge.svg)](https://codecov.io/gh/SEU_USERNAME/recolab-v2)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-green.svg)](https://fastapi.tiangolo.com/)
@@ -106,7 +106,7 @@ O projeto segue **Clean Architecture** com Domain-Driven Design (DDD):
 
 ### **1. Clone o repositório**
 ```bash
-git clone https://github.com/SEU_USERNAME/recolab-v2.git
+git clone https://github.com/Isaque-Sangley/recolab-v2.git
 cd recolab-v2/backend
 ```
 
