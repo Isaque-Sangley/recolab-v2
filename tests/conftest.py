@@ -5,11 +5,12 @@ Fixtures compartilhadas entre todos os testes.
 """
 
 import pytest
+import pytest_asyncio
 from datetime import datetime, timedelta
 from typing import AsyncGenerator
 
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
-from sqlalchemy.pool import NullPool
+from sqlalchemy.pool import StaticPool
 
 from src.infrastructure.database.models import Base
 from src.domain.entities import User, Movie, Rating
@@ -20,24 +21,28 @@ from src.domain.value_objects import UserId, MovieId, RatingScore, Timestamp
 # DATABASE FIXTURES
 # ============================================================================
 
-@pytest.fixture(scope="session")
+@pytest_asyncio.fixture(scope="function")
 async def test_engine():
     """Create test database engine (in-memory SQLite)"""
+    # ✅ CORREÇÃO: Usa StaticPool para garantir que o banco não seja fechado
     engine = create_async_engine(
         "sqlite+aiosqlite:///:memory:",
         echo=False,
-        poolclass=NullPool
+        poolclass=StaticPool,  # Mudei de NullPool para StaticPool
+        connect_args={"check_same_thread": False}
     )
     
+    # Cria todas as tabelas
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
     
     yield engine
     
+    # Fecha o engine
     await engine.dispose()
 
 
-@pytest.fixture
+@pytest_asyncio.fixture
 async def db_session(test_engine) -> AsyncGenerator[AsyncSession, None]:
     """Create database session for tests"""
     async_session = async_sessionmaker(
@@ -47,8 +52,10 @@ async def db_session(test_engine) -> AsyncGenerator[AsyncSession, None]:
     )
     
     async with async_session() as session:
-        yield session
-        await session.rollback()
+        # ✅ Inicia uma transação
+        async with session.begin():
+            yield session
+            # ✅ Rollback automático ao final
 
 
 # ============================================================================

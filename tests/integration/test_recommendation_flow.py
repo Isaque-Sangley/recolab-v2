@@ -5,11 +5,23 @@ Testa fluxo completo de geração de recomendações.
 """
 
 import pytest
-
+import os
+from datetime import datetime
 from src.domain.entities import User, Movie
 from src.domain.value_objects import UserId, MovieId, Timestamp
-from src.domain.services import RecommendationStrategyService, StrategyType
-from src.infrastructure.persistence import UserRepository, MovieRepository
+from src.infrastructure.persistence.user_repository import UserRepository
+from src.infrastructure.persistence.movie_repository import MovieRepository
+from src.domain.services import RecommendationStrategyService
+
+
+# SKIP se não tiver PostgreSQL
+pytestmark = [
+    pytest.mark.integration,
+    pytest.mark.skipif(
+        not os.getenv("DATABASE_URL") or "sqlite" in os.getenv("DATABASE_URL", "").lower(),
+        reason="Integration tests require PostgreSQL. Set DATABASE_URL=postgresql://..."
+    )
+]
 
 
 @pytest.mark.integration

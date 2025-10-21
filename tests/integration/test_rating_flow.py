@@ -5,11 +5,22 @@ Testa fluxo completo de criação/atualização/deleção de ratings.
 """
 
 import pytest
+import os
 from src.domain.entities import User, Movie, Rating
 from src.domain.value_objects import UserId, MovieId, RatingScore, Timestamp
 from src.infrastructure.persistence.rating_repository import RatingRepository
 from src.infrastructure.persistence.user_repository import UserRepository
 from src.infrastructure.persistence.movie_repository import MovieRepository
+
+
+# SKIP se não tiver PostgreSQL
+pytestmark = [
+    pytest.mark.integration,
+    pytest.mark.skipif(
+        not os.getenv("DATABASE_URL") or "sqlite" in os.getenv("DATABASE_URL", "").lower(),
+        reason="Integration tests require PostgreSQL. Set DATABASE_URL=postgresql://..."
+    )
+]
 
 
 @pytest.mark.integration
