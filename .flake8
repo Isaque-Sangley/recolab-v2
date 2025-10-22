@@ -9,7 +9,11 @@ max-line-length = 100
 # W503: Line break before binary operator
 # W504: Line break after binary operator
 # E402: Module level import not at top of file
-ignore = E203,E266,E501,W503,W504,E402
+# W291: Trailing whitespace (handled by black)
+# F401: Module imported but unused (common in __init__.py and type hints)
+# F541: f-string without placeholders (cosmetic issue)
+# F841: Local variable assigned but never used (often intentional)
+ignore = E203,E266,E501,W503,W504,E402,W291,F401,F541,F841
 
 # Exclude directories
 exclude =
