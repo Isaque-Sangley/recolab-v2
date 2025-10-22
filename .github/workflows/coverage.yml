@@ -36,8 +36,14 @@ jobs:
           --cov-report=term
     
     - name: Generate coverage badge
-      uses: cicirello/jacoco-badge-generator@v2
+      uses: tj-actions/coverage-badge-py@v2
       with:
-        badges-directory: badges
-        generate-coverage-badge: true
-        coverage-badge-filename: coverage.svg
+        output: coverage.svg
+    
+    - name: Commit badge
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add coverage.svg || true
+        git diff --quiet && git diff --staged --quiet || git commit -m "docs: update coverage badge [skip ci]"
+        git push || true
