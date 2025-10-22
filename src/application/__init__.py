@@ -36,122 +36,98 @@ Arquitetura:
 └──────────────────────────────┘
 """
 
+# Commands
+from .commands import CreateRatingCommand, DeleteRatingCommand, UpdateRatingCommand
+
 # DTOs
-from .dtos import (
-    # User
-    UserDTO,
-    UserProfileDTO,
-    CreateUserRequest,
-    UpdateUserRequest,
-    
-    # Movie
-    MovieDTO,
-    MovieDetailDTO,
-    SearchMoviesRequest,
-    FilterMoviesRequest,
-    
-    # Rating
-    RatingDTO,
+from .dtos import (  # User; Movie; Rating; Recommendation
     CreateRatingRequest,
-    UpdateRatingRequest,
+    CreateUserRequest,
     DeleteRatingRequest,
-    
-    # Recommendation
-    RecommendationDTO,
-    RecommendationListDTO,
-    GetRecommendationsRequest,
     ExplainRecommendationRequest,
     ExplanationDTO,
-)
-
-# Commands
-from .commands import (
-    CreateRatingCommand,
-    UpdateRatingCommand,
-    DeleteRatingCommand,
+    FilterMoviesRequest,
+    GetRecommendationsRequest,
+    MovieDetailDTO,
+    MovieDTO,
+    RatingDTO,
+    RecommendationDTO,
+    RecommendationListDTO,
+    SearchMoviesRequest,
+    UpdateRatingRequest,
+    UpdateUserRequest,
+    UserDTO,
+    UserProfileDTO,
 )
 
 # Queries
-from .queries import (
-    # User
-    GetUserByIdQuery,
-    GetUserProfileQuery,
-    ListUsersQuery,
-    GetUserStatsQuery,
-    
-    # Movie
+from .queries import (  # User; Movie; Recommendation
+    ExplainRecommendationQuery,
+    FilterMoviesQuery,
+    GetAllGenresQuery,
     GetMovieByIdQuery,
     GetMovieDetailsQuery,
-    SearchMoviesQuery,
-    FilterMoviesQuery,
     GetPopularMoviesQuery,
-    GetAllGenresQuery,
-    
-    # Recommendation
     GetRecommendationsQuery,
-    ExplainRecommendationQuery,
+    GetUserByIdQuery,
+    GetUserProfileQuery,
+    GetUserStatsQuery,
+    ListUsersQuery,
+    SearchMoviesQuery,
 )
 
 # Services
 from .services import (
-    UserApplicationService,
     MovieApplicationService,
     RatingApplicationService,
     RecommendationApplicationService,
+    UserApplicationService,
 )
 
 __all__ = [
     # DTOs - User
-    'UserDTO',
-    'UserProfileDTO',
-    'CreateUserRequest',
-    'UpdateUserRequest',
-    
+    "UserDTO",
+    "UserProfileDTO",
+    "CreateUserRequest",
+    "UpdateUserRequest",
     # DTOs - Movie
-    'MovieDTO',
-    'MovieDetailDTO',
-    'SearchMoviesRequest',
-    'FilterMoviesRequest',
-    
+    "MovieDTO",
+    "MovieDetailDTO",
+    "SearchMoviesRequest",
+    "FilterMoviesRequest",
     # DTOs - Rating
-    'RatingDTO',
-    'CreateRatingRequest',
-    'UpdateRatingRequest',
-    'DeleteRatingRequest',
-    
+    "RatingDTO",
+    "CreateRatingRequest",
+    "UpdateRatingRequest",
+    "DeleteRatingRequest",
     # DTOs - Recommendation
-    'RecommendationDTO',
-    'RecommendationListDTO',
-    'GetRecommendationsRequest',
-    'ExplainRecommendationRequest',
-    'ExplanationDTO',
-    
+    "RecommendationDTO",
+    "RecommendationListDTO",
+    "GetRecommendationsRequest",
+    "ExplainRecommendationRequest",
+    "ExplanationDTO",
     # Commands
-    'CreateRatingCommand',
-    'UpdateRatingCommand',
-    'DeleteRatingCommand',
-    
+    "CreateRatingCommand",
+    "UpdateRatingCommand",
+    "DeleteRatingCommand",
     # Queries - User
-    'GetUserByIdQuery',
-    'GetUserProfileQuery',
-    'ListUsersQuery',
-    'GetUserStatsQuery',
-    
+    "GetUserByIdQuery",
+    "GetUserProfileQuery",
+    "ListUsersQuery",
+    "GetUserStatsQuery",
     # Queries - Movie
-    'GetMovieByIdQuery',
-    'GetMovieDetailsQuery',
-    'SearchMoviesQuery',
-    'FilterMoviesQuery',
-    'GetPopularMoviesQuery',
-    'GetAllGenresQuery',
-    
+    "GetMovieByIdQuery",
+    "GetMovieDetailsQuery",
+    "SearchMoviesQuery",
+    "FilterMoviesQuery",
+    "GetPopularMoviesQuery",
+    "GetAllGenresQuery",
     # Queries - Recommendation
-    'GetRecommendationsQuery',
-    'ExplainRecommendationQuery',
-    
+    "GetRecommendationsQuery",
+    "ExplainRecommendationQuery",
     # Services
-    'UserApplicationService',
-    'MovieApplicationService',
-    'RatingApplicationService',
-    'RecommendationApplicationService',
+    "UserApplicationService",
+    "MovieApplicationService",
+    "RatingApplicationService",
+    "RecommendationApplicationService",
 ]

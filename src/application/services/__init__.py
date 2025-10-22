@@ -18,14 +18,14 @@ Services disponíveis:
 - RecommendationApplicationService
 """
 
-from .user_service import UserApplicationService
 from .movie_service import MovieApplicationService
 from .rating_service import RatingApplicationService
 from .recommendation_service import RecommendationApplicationService
+from .user_service import UserApplicationService
 
 __all__ = [
-    'UserApplicationService',
-    'MovieApplicationService',
-    'RatingApplicationService',
-    'RecommendationApplicationService',
+    "UserApplicationService",
+    "MovieApplicationService",
+    "RatingApplicationService",
+    "RecommendationApplicationService",
 ]

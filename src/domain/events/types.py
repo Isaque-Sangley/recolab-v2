@@ -9,6 +9,7 @@ from enum import Enum
 
 class ModelType(str, Enum):
     """Tipos de modelo ML"""
+
     COLLABORATIVE_FILTERING = "collaborative_filtering"
     CONTENT_BASED = "content_based"
     NEURAL_CF = "neural_cf"
@@ -18,6 +19,7 @@ class ModelType(str, Enum):
 
 class ModelStatus(str, Enum):
     """Status do modelo"""
+
     TRAINING = "training"
     TRAINED = "trained"
     DEPLOYED = "deployed"

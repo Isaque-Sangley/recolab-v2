@@ -24,43 +24,39 @@ Arquitetura:
     └─────────┘
 """
 
+# Features
+from .features import FeatureDefinition, FeatureStore, FeatureType, FeatureVector
+
 # Models
 from .models import BaseRecommendationModel, NeuralCF
 
-# Features
-from .features import FeatureStore, FeatureDefinition, FeatureVector, FeatureType
-
-# Training
-from .training import ModelTrainer, TrainingConfig, TrainingResult, TrainingStrategy
-
 # Registry
-from .registry import ModelRegistry, ModelVersion, DeploymentStrategy
+from .registry import DeploymentStrategy, ModelRegistry, ModelVersion
 
 # Serving
 from .serving import ModelServer
 
+# Training
+from .training import ModelTrainer, TrainingConfig, TrainingResult, TrainingStrategy
+
 __all__ = [
     # Models
-    'BaseRecommendationModel',
-    'NeuralCF',
-    
+    "BaseRecommendationModel",
+    "NeuralCF",
     # Features
-    'FeatureStore',
-    'FeatureDefinition',
-    'FeatureVector',
-    'FeatureType',
-    
+    "FeatureStore",
+    "FeatureDefinition",
+    "FeatureVector",
+    "FeatureType",
     # Training
-    'ModelTrainer',
-    'TrainingConfig',
-    'TrainingResult',
-    'TrainingStrategy',
-    
+    "ModelTrainer",
+    "TrainingConfig",
+    "TrainingResult",
+    "TrainingStrategy",
     # Registry
-    'ModelRegistry',
-    'ModelVersion',
-    'DeploymentStrategy',
-    
+    "ModelRegistry",
+    "ModelVersion",
+    "DeploymentStrategy",
     # Serving
-    'ModelServer',
+    "ModelServer",
 ]

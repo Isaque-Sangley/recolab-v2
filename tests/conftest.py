@@ -4,22 +4,22 @@ Pytest Fixtures
 Fixtures compartilhadas entre todos os testes.
 """
 
-import pytest
-import pytest_asyncio
 from datetime import datetime, timedelta
 from typing import AsyncGenerator
 
-from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
+import pytest
+import pytest_asyncio
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.pool import StaticPool
 
+from src.domain.entities import Movie, Rating, User
+from src.domain.value_objects import MovieId, RatingScore, Timestamp, UserId
 from src.infrastructure.database.models import Base
-from src.domain.entities import User, Movie, Rating
-from src.domain.value_objects import UserId, MovieId, RatingScore, Timestamp
-
 
 # ============================================================================
 # DATABASE FIXTURES
 # ============================================================================
+
 
 @pytest_asyncio.fixture(scope="function")
 async def test_engine():
@@ -29,15 +29,15 @@ async def test_engine():
         "sqlite+aiosqlite:///:memory:",
         echo=False,
         poolclass=StaticPool,  # Mudei de NullPool para StaticPool
-        connect_args={"check_same_thread": False}
+        connect_args={"check_same_thread": False},
     )
-    
+
     # Cria todas as tabelas
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
-    
+
     yield engine
-    
+
     # Fecha o engine
     await engine.dispose()
 
@@ -45,12 +45,8 @@ async def test_engine():
 @pytest_asyncio.fixture
 async def db_session(test_engine) -> AsyncGenerator[AsyncSession, None]:
     """Create database session for tests"""
-    async_session = async_sessionmaker(
-        test_engine,
-        class_=AsyncSession,
-        expire_on_commit=False
-    )
-    
+    async_session = async_sessionmaker(test_engine, class_=AsyncSession, expire_on_commit=False)
+
     async with async_session() as session:
         # ✅ Inicia uma transação
         async with session.begin():
@@ -62,6 +58,7 @@ async def db_session(test_engine) -> AsyncGenerator[AsyncSession, None]:
 # ENTITY FIXTURES
 # ============================================================================
 
+
 @pytest.fixture
 def sample_user() -> User:
     """Create sample user entity"""
@@ -71,7 +68,7 @@ def sample_user() -> User:
         n_ratings=10,
         avg_rating=4.2,
         last_activity=Timestamp.now(),
-        favorite_genres=["Action", "Sci-Fi"]
+        favorite_genres=["Action", "Sci-Fi"],
     )
 
 
@@ -84,7 +81,7 @@ def sample_movie() -> Movie:
         genres=["Action", "Sci-Fi"],
         year=1999,
         rating_count=100,
-        avg_rating=4.5
+        avg_rating=4.5,
     )
 
 
@@ -95,7 +92,7 @@ def sample_rating(sample_user, sample_movie) -> Rating:
         user_id=sample_user.id,
         movie_id=sample_movie.id,
         score=RatingScore(4.5),
-        timestamp=Timestamp.now()
+        timestamp=Timestamp.now(),
     )
 
 
@@ -103,11 +100,7 @@ def sample_rating(sample_user, sample_movie) -> Rating:
 def cold_start_user() -> User:
     """User with 0 ratings (cold start)"""
     return User(
-        id=UserId(100),
-        created_at=Timestamp.now(),
-        n_ratings=0,
-        avg_rating=0.0,
-        favorite_genres=[]
+        id=UserId(100), created_at=Timestamp.now(), n_ratings=0, avg_rating=0.0, favorite_genres=[]
     )
 
 
@@ -120,7 +113,7 @@ def power_user() -> User:
         n_ratings=150,
         avg_rating=4.0,
         last_activity=Timestamp.now(),
-        favorite_genres=["Drama", "Thriller", "Action"]
+        favorite_genres=["Drama", "Thriller", "Action"],
     )
 
 
@@ -133,7 +126,7 @@ def popular_movie() -> Movie:
         genres=["Action", "Sci-Fi", "Thriller"],
         year=2010,
         rating_count=350,
-        avg_rating=4.7
+        avg_rating=4.7,
     )
 
 
@@ -146,5 +139,5 @@ def niche_movie() -> Movie:
         genres=["Drama", "Independent"],
         year=2020,
         rating_count=15,
-        avg_rating=4.3
+        avg_rating=4.3,
     )

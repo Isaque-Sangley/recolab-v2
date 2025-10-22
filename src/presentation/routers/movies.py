@@ -5,65 +5,59 @@ Endpoints relacionados a filmes.
 """
 
 from typing import List, Optional
+
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 
-from ..dependencies import get_movie_service
+from ...application.dtos import FilterMoviesRequest, MovieDetailDTO, MovieDTO
 from ...application.services import MovieApplicationService
-from ...application.dtos import MovieDTO, MovieDetailDTO, FilterMoviesRequest
-
+from ..dependencies import get_movie_service
 
 router = APIRouter(prefix="/movies", tags=["movies"])
 
 
 @router.get("/{movie_id}", response_model=MovieDTO)
-async def get_movie(
-    movie_id: int,
-    service: MovieApplicationService = Depends(get_movie_service)
-):
+async def get_movie(movie_id: int, service: MovieApplicationService = Depends(get_movie_service)):
     """
     Obtém filme por ID.
-    
+
     Args:
         movie_id: ID do filme
-    
+
     Returns:
         MovieDTO
     """
     movie = await service.get_movie(movie_id)
-    
+
     if not movie:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Movie {movie_id} not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail=f"Movie {movie_id} not found"
         )
-    
+
     return movie
 
 
 @router.get("/{movie_id}/details", response_model=MovieDetailDTO)
 async def get_movie_details(
-    movie_id: int,
-    service: MovieApplicationService = Depends(get_movie_service)
+    movie_id: int, service: MovieApplicationService = Depends(get_movie_service)
 ):
     """
     Obtém detalhes completos do filme.
-    
+
     Inclui filmes similares.
-    
+
     Args:
         movie_id: ID do filme
-    
+
     Returns:
         MovieDetailDTO
     """
     details = await service.get_movie_details(movie_id)
-    
+
     if not details:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Movie {movie_id} not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail=f"Movie {movie_id} not found"
         )
-    
+
     return details
 
 
@@ -71,15 +65,15 @@ async def get_movie_details(
 async def search_movies(
     q: str = Query(..., min_length=2, description="Search query"),
     limit: int = Query(50, le=100, description="Max results"),
-    service: MovieApplicationService = Depends(get_movie_service)
+    service: MovieApplicationService = Depends(get_movie_service),
 ):
     """
     Busca filmes por título.
-    
+
     Args:
         q: termo de busca (mínimo 2 caracteres)
         limit: limite de resultados (max 100)
-    
+
     Returns:
         Lista de MovieDTO
     """
@@ -95,11 +89,11 @@ async def filter_movies(
     min_rating: Optional[float] = Query(None, ge=0, le=5, description="Minimum rating"),
     min_rating_count: Optional[int] = Query(None, ge=0, description="Minimum rating count"),
     limit: int = Query(100, le=200, description="Max results"),
-    service: MovieApplicationService = Depends(get_movie_service)
+    service: MovieApplicationService = Depends(get_movie_service),
 ):
     """
     Filtra filmes por múltiplos critérios.
-    
+
     Args:
         genres: lista de gêneros
         min_year: ano mínimo
@@ -107,7 +101,7 @@ async def filter_movies(
         min_rating: rating mínimo (0-5)
         min_rating_count: mínimo de avaliações
         limit: limite de resultados
-    
+
     Returns:
         Lista de MovieDTO
     """
@@ -117,9 +111,9 @@ async def filter_movies(
         max_year=max_year,
         min_rating=min_rating,
         min_rating_count=min_rating_count,
-        limit=limit
+        limit=limit,
     )
-    
+
     movies = await service.filter_movies(request)
     return movies
 
@@ -127,16 +121,16 @@ async def filter_movies(
 @router.get("/popular/list", response_model=List[MovieDTO])
 async def get_popular_movies(
     limit: int = Query(40, le=100, description="Max results"),
-    service: MovieApplicationService = Depends(get_movie_service)
+    service: MovieApplicationService = Depends(get_movie_service),
 ):
     """
     Filmes populares.
-    
+
     Ordenado por número de avaliações.
-    
+
     Args:
         limit: limite de resultados
-    
+
     Returns:
         Lista de MovieDTO
     """
@@ -145,12 +139,10 @@ async def get_popular_movies(
 
 
 @router.get("/genres/list", response_model=List[str])
-async def get_all_genres(
-    service: MovieApplicationService = Depends(get_movie_service)
-):
+async def get_all_genres(service: MovieApplicationService = Depends(get_movie_service)):
     """
     Todos os gêneros disponíveis.
-    
+
     Returns:
         Lista de gêneros
     """
@@ -162,15 +154,15 @@ async def get_all_genres(
 async def get_movies_by_genre(
     genre: str,
     limit: int = Query(40, le=100, description="Max results"),
-    service: MovieApplicationService = Depends(get_movie_service)
+    service: MovieApplicationService = Depends(get_movie_service),
 ):
     """
     Filmes de um gênero específico.
-    
+
     Args:
         genre: nome do gênero
         limit: limite de resultados
-    
+
     Returns:
         Lista de MovieDTO
     """

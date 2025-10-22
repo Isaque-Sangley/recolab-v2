@@ -23,18 +23,18 @@ Em Python usamos ABC (Abstract Base Class) para isso.
 """
 
 from .base import BaseRepository
-from .user_repository import IUserRepository
+from .model_repository import IModelRepository, ModelMetadata
 from .movie_repository import IMovieRepository
 from .rating_repository import IRatingRepository
 from .recommendation_repository import IRecommendationRepository
-from .model_repository import IModelRepository, ModelMetadata
+from .user_repository import IUserRepository
 
 __all__ = [
-    'BaseRepository',
-    'IUserRepository',
-    'IMovieRepository',
-    'IRatingRepository',
-    'IRecommendationRepository',
-    'IModelRepository',
-    'ModelMetadata',
+    "BaseRepository",
+    "IUserRepository",
+    "IMovieRepository",
+    "IRatingRepository",
+    "IRecommendationRepository",
+    "IModelRepository",
+    "ModelMetadata",
 ]

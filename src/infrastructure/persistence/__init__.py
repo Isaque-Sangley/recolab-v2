@@ -16,16 +16,16 @@ Padrão:
 - Usam mappers para conversão
 """
 
-from .user_repository import UserRepository
+from .model_repository import ModelRepository
 from .movie_repository import MovieRepository
 from .rating_repository import RatingRepository
 from .recommendation_repository import RecommendationRepository
-from .model_repository import ModelRepository
+from .user_repository import UserRepository
 
 __all__ = [
-    'UserRepository',
-    'MovieRepository',
-    'RatingRepository',
-    'RecommendationRepository',
-    'ModelRepository',
+    "UserRepository",
+    "MovieRepository",
+    "RatingRepository",
+    "RecommendationRepository",
+    "ModelRepository",
 ]

@@ -22,31 +22,23 @@ Características:
 - Focados no domínio
 """
 
+from .diversity_service import DiversityMetrics, DiversityService
 from .recommendation_strategy_service import (
     RecommendationStrategyService,
+    StrategyRecommendation,
     StrategyType,
-    StrategyRecommendation
 )
-from .user_profile_service import (
-    UserProfileService,
-    UserProfile
-)
-from .diversity_service import (
-    DiversityService,
-    DiversityMetrics
-)
+from .user_profile_service import UserProfile, UserProfileService
 
 __all__ = [
     # Recommendation Strategy
-    'RecommendationStrategyService',
-    'StrategyType',
-    'StrategyRecommendation',
-    
+    "RecommendationStrategyService",
+    "StrategyType",
+    "StrategyRecommendation",
     # User Profile
-    'UserProfileService',
-    'UserProfile',
-    
+    "UserProfileService",
+    "UserProfile",
     # Diversity
-    'DiversityService',
-    'DiversityMetrics',
+    "DiversityService",
+    "DiversityMetrics",
 ]

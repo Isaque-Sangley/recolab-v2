@@ -35,11 +35,11 @@ Arquitetura:
 └─────────────────────────────┘
 """
 
-from .main import app, create_app
 from .config import get_settings
+from .main import app, create_app
 
 __all__ = [
-    'app',
-    'create_app',
-    'get_settings',
+    "app",
+    "create_app",
+    "get_settings",
 ]

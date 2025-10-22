@@ -11,64 +11,47 @@ Padrão Event-Driven:
 
 from .base import DomainEvent
 from .event_bus import DomainEventBus
-from .types import ModelType, ModelStatus
-
-# User Events
-from .user_events import (
-    UserCreated,
-    UserProfileUpdated,
-    UserBecameActive,
-    UserBecamePowerUser
-)
-
-# Rating Events
-from .rating_events import (
-    RatingCreated,
-    RatingUpdated,
-    RatingDeleted
-)
-
-# Recommendation Events
-from .recommendation_events import (
-    RecommendationsGenerated,
-    RecommendationClicked
-)
 
 # Model Events
 from .model_events import (
-    ModelTrainingStarted,
-    ModelTrainingCompleted,
     ModelDeployed,
-    ModelPerformanceDegraded
+    ModelPerformanceDegraded,
+    ModelTrainingCompleted,
+    ModelTrainingStarted,
 )
+
+# Rating Events
+from .rating_events import RatingCreated, RatingDeleted, RatingUpdated
+
+# Recommendation Events
+from .recommendation_events import RecommendationClicked, RecommendationsGenerated
+from .types import ModelStatus, ModelType
+
+# User Events
+from .user_events import UserBecameActive, UserBecamePowerUser, UserCreated, UserProfileUpdated
 
 __all__ = [
     # Base
-    'DomainEvent',
-    'DomainEventBus',
-    
+    "DomainEvent",
+    "DomainEventBus",
     # Types
-    'ModelType',
-    'ModelStatus',
-    
+    "ModelType",
+    "ModelStatus",
     # User Events
-    'UserCreated',
-    'UserProfileUpdated',
-    'UserBecameActive',
-    'UserBecamePowerUser',
-    
+    "UserCreated",
+    "UserProfileUpdated",
+    "UserBecameActive",
+    "UserBecamePowerUser",
     # Rating Events
-    'RatingCreated',
-    'RatingUpdated',
-    'RatingDeleted',
-    
+    "RatingCreated",
+    "RatingUpdated",
+    "RatingDeleted",
     # Recommendation Events
-    'RecommendationsGenerated',
-    'RecommendationClicked',
-    
+    "RecommendationsGenerated",
+    "RecommendationClicked",
     # Model Events
-    'ModelTrainingStarted',
-    'ModelTrainingCompleted',
-    'ModelDeployed',
-    'ModelPerformanceDegraded',
+    "ModelTrainingStarted",
+    "ModelTrainingCompleted",
+    "ModelDeployed",
+    "ModelPerformanceDegraded",
 ]

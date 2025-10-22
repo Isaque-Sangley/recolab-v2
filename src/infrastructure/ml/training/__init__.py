@@ -9,16 +9,11 @@ Componentes:
 - TrainingResult: resultado do treinamento
 """
 
-from .model_trainer import (
-    ModelTrainer,
-    TrainingConfig,
-    TrainingResult,
-    TrainingStrategy
-)
+from .model_trainer import ModelTrainer, TrainingConfig, TrainingResult, TrainingStrategy
 
 __all__ = [
-    'ModelTrainer',
-    'TrainingConfig',
-    'TrainingResult',
-    'TrainingStrategy',
+    "ModelTrainer",
+    "TrainingConfig",
+    "TrainingResult",
+    "TrainingStrategy",
 ]

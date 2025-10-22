@@ -13,14 +13,10 @@ Benefícios:
 - Escalabilidade (write/read separados)
 """
 
-from .rating_commands import (
-    CreateRatingCommand,
-    UpdateRatingCommand,
-    DeleteRatingCommand
-)
+from .rating_commands import CreateRatingCommand, DeleteRatingCommand, UpdateRatingCommand
 
 __all__ = [
-    'CreateRatingCommand',
-    'UpdateRatingCommand',
-    'DeleteRatingCommand',
+    "CreateRatingCommand",
+    "UpdateRatingCommand",
+    "DeleteRatingCommand",
 ]

@@ -13,46 +13,36 @@ Benefícios:
 - Denormalização quando necessário
 """
 
-# User Queries
-from .user_queries import (
-    GetUserByIdQuery,
-    GetUserProfileQuery,
-    ListUsersQuery,
-    GetUserStatsQuery
-)
-
 # Movie Queries
 from .movie_queries import (
+    FilterMoviesQuery,
+    GetAllGenresQuery,
     GetMovieByIdQuery,
     GetMovieDetailsQuery,
-    SearchMoviesQuery,
-    FilterMoviesQuery,
     GetPopularMoviesQuery,
-    GetAllGenresQuery
+    SearchMoviesQuery,
 )
 
 # Recommendation Queries
-from .recommendation_queries import (
-    GetRecommendationsQuery,
-    ExplainRecommendationQuery
-)
+from .recommendation_queries import ExplainRecommendationQuery, GetRecommendationsQuery
+
+# User Queries
+from .user_queries import GetUserByIdQuery, GetUserProfileQuery, GetUserStatsQuery, ListUsersQuery
 
 __all__ = [
     # User
-    'GetUserByIdQuery',
-    'GetUserProfileQuery',
-    'ListUsersQuery',
-    'GetUserStatsQuery',
-    
+    "GetUserByIdQuery",
+    "GetUserProfileQuery",
+    "ListUsersQuery",
+    "GetUserStatsQuery",
     # Movie
-    'GetMovieByIdQuery',
-    'GetMovieDetailsQuery',
-    'SearchMoviesQuery',
-    'FilterMoviesQuery',
-    'GetPopularMoviesQuery',
-    'GetAllGenresQuery',
-    
+    "GetMovieByIdQuery",
+    "GetMovieDetailsQuery",
+    "SearchMoviesQuery",
+    "FilterMoviesQuery",
+    "GetPopularMoviesQuery",
+    "GetAllGenresQuery",
     # Recommendation
-    'GetRecommendationsQuery',
-    'ExplainRecommendationQuery',
+    "GetRecommendationsQuery",
+    "ExplainRecommendationQuery",
 ]

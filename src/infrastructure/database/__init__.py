@@ -5,24 +5,23 @@ Configuração e modelos do banco de dados.
 """
 
 from .config import DatabaseConfig, get_database_config, get_session
-
 from .models import (
     Base,
-    UserModel,
+    ModelMetadataModel,
     MovieModel,
     RatingModel,
     RecommendationModel,
-    ModelMetadataModel
+    UserModel,
 )
 
 __all__ = [
-    'DatabaseConfig',
-    'get_database_config',
-    'get_session',
-    'Base',
-    'UserModel',
-    'MovieModel',
-    'RatingModel',
-    'RecommendationModel',
-    'ModelMetadataModel',
+    "DatabaseConfig",
+    "get_database_config",
+    "get_session",
+    "Base",
+    "UserModel",
+    "MovieModel",
+    "RatingModel",
+    "RecommendationModel",
+    "ModelMetadataModel",
 ]

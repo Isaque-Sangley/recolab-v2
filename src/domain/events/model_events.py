@@ -3,14 +3,16 @@ Model Domain Events
 """
 
 from dataclasses import dataclass, field
-from typing import Dict, Any, Optional
+from typing import Any, Dict, Optional
+
 from .base import DomainEvent
-from .types import ModelType, ModelStatus
+from .types import ModelStatus, ModelType
 
 
 @dataclass(frozen=True)
 class ModelTrainingStarted(DomainEvent):
     """Evento: Treinamento iniciado"""
+
     model_type: ModelType = ModelType.NEURAL_CF
     model_version: str = ""
     n_training_samples: int = 0
@@ -21,6 +23,7 @@ class ModelTrainingStarted(DomainEvent):
 @dataclass(frozen=True)
 class ModelTrainingCompleted(DomainEvent):
     """Evento: Treinamento completo"""
+
     model_type: ModelType = ModelType.NEURAL_CF
     model_version: str = ""
     status: ModelStatus = ModelStatus.TRAINED
@@ -33,6 +36,7 @@ class ModelTrainingCompleted(DomainEvent):
 @dataclass(frozen=True)
 class ModelDeployed(DomainEvent):
     """Evento: Modelo deployed"""
+
     model_type: ModelType = ModelType.NEURAL_CF
     model_version: str = ""
     previous_version: Optional[str] = None
@@ -43,6 +47,7 @@ class ModelDeployed(DomainEvent):
 @dataclass(frozen=True)
 class ModelPerformanceDegraded(DomainEvent):
     """Evento: Performance degradou"""
+
     model_type: ModelType = ModelType.NEURAL_CF
     model_version: str = ""
     metric_name: str = ""

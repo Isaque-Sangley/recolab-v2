@@ -14,6 +14,6 @@ from .base import BaseRecommendationModel
 from .neural_cf import NeuralCF
 
 __all__ = [
-    'BaseRecommendationModel',
-    'NeuralCF',
+    "BaseRecommendationModel",
+    "NeuralCF",
 ]

@@ -15,16 +15,16 @@ Características:
 - Thread-safe
 """
 
-from .user_id import UserId
 from .movie_id import MovieId
 from .rating_score import RatingScore
 from .recommendation_score import RecommendationScore
 from .timestamp import Timestamp
+from .user_id import UserId
 
 __all__ = [
-    'UserId',
-    'MovieId',
-    'RatingScore',
-    'RecommendationScore',
-    'Timestamp',
+    "UserId",
+    "MovieId",
+    "RatingScore",
+    "RecommendationScore",
+    "Timestamp",
 ]

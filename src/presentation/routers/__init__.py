@@ -10,14 +10,11 @@ Routers disponíveis:
 - recommendations: recomendações (CORE!)
 """
 
-from . import users
-from . import movies
-from . import ratings
-from . import recommendations
+from . import movies, ratings, recommendations, users
 
 __all__ = [
-    'users',
-    'movies',
-    'ratings',
-    'recommendations',
+    "users",
+    "movies",
+    "ratings",
+    "recommendations",
 ]

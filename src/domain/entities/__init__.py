@@ -17,15 +17,15 @@ Entities neste domínio:
 - Recommendation: sugestão gerada pelo sistema
 """
 
-from .user import User
 from .movie import Movie
 from .rating import Rating
 from .recommendation import Recommendation, RecommendationSource
+from .user import User
 
 __all__ = [
-    'User',
-    'Movie',
-    'Rating',
-    'Recommendation',
-    'RecommendationSource',
+    "User",
+    "Movie",
+    "Rating",
+    "Recommendation",
+    "RecommendationSource",
 ]

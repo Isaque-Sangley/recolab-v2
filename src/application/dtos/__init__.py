@@ -15,62 +15,44 @@ Tipos:
 - Response DTOs: respostas enriquecidas
 """
 
-# User DTOs
-from .user_dtos import (
-    UserDTO,
-    UserProfileDTO,
-    CreateUserRequest,
-    UpdateUserRequest
-)
-
 # Movie DTOs
-from .movie_dtos import (
-    MovieDTO,
-    MovieDetailDTO,
-    SearchMoviesRequest,
-    FilterMoviesRequest
-)
+from .movie_dtos import FilterMoviesRequest, MovieDetailDTO, MovieDTO, SearchMoviesRequest
 
 # Rating DTOs
-from .rating_dtos import (
-    RatingDTO,
-    CreateRatingRequest,
-    UpdateRatingRequest,
-    DeleteRatingRequest
-)
+from .rating_dtos import CreateRatingRequest, DeleteRatingRequest, RatingDTO, UpdateRatingRequest
 
 # Recommendation DTOs
 from .recommendation_dtos import (
+    ExplainRecommendationRequest,
+    ExplanationDTO,
+    GetRecommendationsRequest,
     RecommendationDTO,
     RecommendationListDTO,
-    GetRecommendationsRequest,
-    ExplainRecommendationRequest,
-    ExplanationDTO
 )
+
+# User DTOs
+from .user_dtos import CreateUserRequest, UpdateUserRequest, UserDTO, UserProfileDTO
 
 __all__ = [
     # User
-    'UserDTO',
-    'UserProfileDTO',
-    'CreateUserRequest',
-    'UpdateUserRequest',
-    
+    "UserDTO",
+    "UserProfileDTO",
+    "CreateUserRequest",
+    "UpdateUserRequest",
     # Movie
-    'MovieDTO',
-    'MovieDetailDTO',
-    'SearchMoviesRequest',
-    'FilterMoviesRequest',
-    
+    "MovieDTO",
+    "MovieDetailDTO",
+    "SearchMoviesRequest",
+    "FilterMoviesRequest",
     # Rating
-    'RatingDTO',
-    'CreateRatingRequest',
-    'UpdateRatingRequest',
-    'DeleteRatingRequest',
-    
+    "RatingDTO",
+    "CreateRatingRequest",
+    "UpdateRatingRequest",
+    "DeleteRatingRequest",
     # Recommendation
-    'RecommendationDTO',
-    'RecommendationListDTO',
-    'GetRecommendationsRequest',
-    'ExplainRecommendationRequest',
-    'ExplanationDTO',
+    "RecommendationDTO",
+    "RecommendationListDTO",
+    "GetRecommendationsRequest",
+    "ExplainRecommendationRequest",
+    "ExplanationDTO",
 ]

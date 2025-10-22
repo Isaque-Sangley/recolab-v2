@@ -2,14 +2,14 @@
 # Maximum line length
 max-line-length = 100
 
-# Ignore specific errors
-ignore = 
-    E203,  # Whitespace before ':'
-    E266,  # Too many leading '#' for block comment
-    E501,  # Line too long (handled by black)
-    W503,  # Line break before binary operator
-    W504,  # Line break after binary operator
-    E402,  # Module level import not at top of file
+# Ignore specific errors:
+# E203: Whitespace before ':'
+# E266: Too many leading '#' for block comment
+# E501: Line too long (handled by black)
+# W503: Line break before binary operator
+# W504: Line break after binary operator
+# E402: Module level import not at top of file
+ignore = E203,E266,E501,W503,W504,E402
 
 # Exclude directories
 exclude =
@@ -31,10 +31,10 @@ per-file-ignores =
     tests/*:F401,F403,F811
 
 # Show source code for errors
-show-source = true
+show-source = True
 
 # Count errors
-count = true
+count = True
 
 # Statistics at the end
-statistics = true
+statistics = True
