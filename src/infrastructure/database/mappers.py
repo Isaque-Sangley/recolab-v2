@@ -89,7 +89,7 @@ class MovieMapper:
             year=model.year,
             rating_count=model.rating_count,
             avg_rating=model.avg_rating,
-            content_features=None,  
+            content_features=None,
         )
 
     @staticmethod

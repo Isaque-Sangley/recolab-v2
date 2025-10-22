@@ -24,7 +24,7 @@ async def lifespan(app: FastAPI):
 
     Executa código no startup e shutdown da aplicação.
     """
-    
+
     print("🚀 Starting RecoLab API...")
 
     # Inicializa banco de dados
