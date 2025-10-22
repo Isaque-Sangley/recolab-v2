@@ -5,11 +5,17 @@
 ### Sistema Avançado de Recomendação de Filmes com Deep Learning
 
 [![CI Pipeline](https://github.com/Isaque-Sangley/recolab-v2/actions/workflows/ci.yml/badge.svg)](https://github.com/Isaque-Sangley/recolab-v2/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/SEU_USERNAME/recolab-v2/branch/main/graph/badge.svg)](https://codecov.io/gh/SEU_USERNAME/recolab-v2)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-green.svg)](https://fastapi.tiangolo.com/)
+[![Coverage Badge](https://github.com/Isaque-Sangley/recolab-v2/blob/main/coverage.svg)](https://github.com/Isaque-Sangley/recolab-v2/actions/workflows/coverage.yml)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.119+-green.svg)](https://fastapi.tiangolo.com/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.4+-red.svg)](https://pytorch.org/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+[![GitHub stars](https://img.shields.io/github/stars/Isaque-Sangley/recolab-v2?style=social)](https://github.com/Isaque-Sangley/recolab-v2/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Isaque-Sangley/recolab-v2?style=social)](https://github.com/Isaque-Sangley/recolab-v2/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/Isaque-Sangley/recolab-v2)](https://github.com/Isaque-Sangley/recolab-v2/issues)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Isaque-Sangley/recolab-v2)](https://github.com/Isaque-Sangley/recolab-v2/commits/main)
 
 [Features](#-features) • [Architecture](#-architecture) • [Quick Start](#-quick-start) • [API Docs](#-api-documentation) • [Tech Stack](#-tech-stack)
 
