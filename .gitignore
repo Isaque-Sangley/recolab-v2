@@ -312,14 +312,7 @@ docs/_templates/
 # ============================================
 # Keep These Files (exceptions)
 # ============================================
-# Keep example env file
 !.env.example
-
-# Keep empty directories with .gitkeep
 !.gitkeep
-
-# Keep README files
 !README*.md
-
-# Keep requirements
 !requirements*.txt

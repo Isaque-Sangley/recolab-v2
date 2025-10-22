@@ -23,12 +23,12 @@ async def main():
     print("=" * 60)
     print()
 
-    print("🔧 Inicializando banco de dados...")
+    print("Inicializando banco de dados...")
 
     db_config = get_database_config()
 
     try:
-        print("📊 Criando tabelas...")
+        print("Criando tabelas...")
 
         # Importa ORM models para registrar no metadata
         from src.infrastructure.persistence.orm_models import Base
@@ -37,14 +37,14 @@ async def main():
         async with db_config.engine.begin() as conn:
             # Drop first (apenas dev!)
             await conn.run_sync(Base.metadata.drop_all)
-            print("   🗑️  Tabelas antigas removidas")
+            print("Tabelas antigas removidas")
 
             # Create
             await conn.run_sync(Base.metadata.create_all)
-            print("   ✅ Tabelas criadas")
+            print("Tabelas criadas")
 
         print()
-        print("✅ SETUP COMPLETO!")
+        print("SETUP COMPLETO!")
         print()
         print("Tabelas criadas:")
         print("  - users")
@@ -54,7 +54,7 @@ async def main():
         print("  - model_metadata")
 
     except Exception as e:
-        print(f"\n❌ Erro: {e}")
+        print(f"\n Erro: {e}")
         import traceback
 
         traceback.print_exc()

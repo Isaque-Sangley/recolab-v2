@@ -88,8 +88,8 @@ class UserProfileDTO:
 class CreateUserRequest:
     """Request para criar usuário"""
 
-    # Por enquanto, usuários são criados automaticamente
-    # Futuro: pode ter email, name, etc
+    # Usuários criados automaticamente
+    # Futuro: email, name, etc
     pass
 
 

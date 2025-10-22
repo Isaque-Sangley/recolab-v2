@@ -105,7 +105,7 @@ class ModelServer:
 
         except Exception as e:
             self._serving_stats["errors"] += 1
-            print(f"❌ Prediction error: {e}")
+            print(f"Prediction error: {e}")
 
             # Fallback: retorna média neutra
             return 3.0
@@ -192,7 +192,7 @@ class ModelServer:
 
         except Exception as e:
             self._serving_stats["errors"] += 1
-            print(f"❌ Recommendation error: {e}")
+            print(f"Recommendation error: {e}")
 
             # Fallback: retorna lista vazia (ou popular items)
             return []
@@ -217,7 +217,7 @@ class ModelServer:
             Dict user_id → List[Recommendation]
         """
         # TODO: Implementar batching real com PyTorch
-        # Por ora, processa sequencialmente
+        # Por enquanto, processa sequencialmente
 
         results = {}
 

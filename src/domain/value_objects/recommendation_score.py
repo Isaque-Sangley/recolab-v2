@@ -14,7 +14,7 @@ class RecommendationScore:
     """
     Score de confiança de uma recomendação.
 
-    Range: 0.0 (péssimo) a 1.0 (perfeito)
+    Range: 0.0 (péssimo) a 1.0 (MUITO BOM)
 
     Diferente de RatingScore:
     - RatingScore: opinião do usuário (1-5)

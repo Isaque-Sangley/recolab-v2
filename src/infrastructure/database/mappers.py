@@ -89,7 +89,7 @@ class MovieMapper:
             year=model.year,
             rating_count=model.rating_count,
             avg_rating=model.avg_rating,
-            content_features=None,  # Campo não existe no banco
+            content_features=None,  
         )
 
     @staticmethod
@@ -102,7 +102,6 @@ class MovieMapper:
             year=entity.year,
             rating_count=entity.rating_count,
             avg_rating=entity.avg_rating,
-            # content_features não é salvo no banco
         )
 
     @staticmethod
@@ -113,7 +112,6 @@ class MovieMapper:
         model.year = entity.year
         model.rating_count = entity.rating_count
         model.avg_rating = entity.avg_rating
-        # content_features não existe no banco
         model.updated_at = datetime.now()
 
 

@@ -192,7 +192,7 @@ class ModelRegistry:
         Returns:
             ModelVersion registrado
         """
-        print(f"📝 Registering model {model_type.value} v{version}")
+        print(f"Registering model {model_type.value} v{version}")
 
         # Salva modelo
         metadata = await self.model_repository.save_model(
@@ -212,7 +212,7 @@ class ModelRegistry:
             created_at=metadata.created_at,
         )
 
-        print(f"✅ Model registered successfully")
+        print(f"Model registered successfully")
         print(f"   Metrics: {metrics}")
 
         return model_version
@@ -263,7 +263,7 @@ class ModelRegistry:
         if strategy is None:
             strategy = DeploymentStrategy.full_rollout()
 
-        print(f"🚀 Promoting {model_type.value} v{version} to CHAMPION")
+        print(f"Promoting {model_type.value} v{version} to CHAMPION")
         print(f"   Strategy: {strategy['type']}")
 
         # Obtém versão atual (antigo champion)
@@ -294,7 +294,7 @@ class ModelRegistry:
             )
             self.event_bus.publish(event)
 
-        print(f"✅ Promotion complete!")
+        print(f"Promotion complete!")
         if old_champion:
             print(f"   Previous champion: v{old_champion.version}")
         print(f"   New champion: v{new_champion.version}")
@@ -312,7 +312,7 @@ class ModelRegistry:
         Returns:
             ModelVersion após rollback
         """
-        print(f"⏮️  Rolling back {model_type.value} to v{to_version}")
+        print(f"Rolling back {model_type.value} to v{to_version}")
 
         return await self.promote_to_champion(
             model_type=model_type,
@@ -400,11 +400,11 @@ class ModelRegistry:
         # Verifica cache
         cache_key = f"{model_type.value}:{version}"
         if cache_key in self._loaded_models:
-            print(f"📦 Loading model from cache: {cache_key}")
+            print(f"Loading model from cache: {cache_key}")
             return self._loaded_models[cache_key]
 
         # Carrega do repository
-        print(f"📂 Loading model from disk: {cache_key}")
+        print(f"Loading model from disk: {cache_key}")
         model = await self.model_repository.load_model(model_type, version)
 
         # Cache
@@ -484,4 +484,4 @@ class ModelRegistry:
     def clear_cache(self) -> None:
         """Limpa cache de modelos carregados"""
         self._loaded_models.clear()
-        print("🗑️  Model cache cleared")
+        print("Model cache cleared")

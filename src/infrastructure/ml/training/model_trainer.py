@@ -128,7 +128,7 @@ class ModelTrainer:
         if version is None:
             version = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-        print(f"🚀 Starting training...")
+        print(f"Starting training...")
         print(f"   Model type: {config.model_type.value}")
         print(f"   Version: {version}")
         print(f"   Strategy: {config.strategy.value}")
@@ -188,7 +188,7 @@ class ModelTrainer:
                 )
                 self.event_bus.publish(complete_event)
 
-            print(f"✅ Training complete!")
+            print(f"Training complete!")
             print(f"   Duration: {duration:.2f}s")
             print(f"   Metrics: {all_metrics}")
 
@@ -199,7 +199,7 @@ class ModelTrainer:
             duration = (end_time - start_time).total_seconds()
 
             error_msg = str(e)
-            print(f"❌ Training failed: {error_msg}")
+            print(f"Training failed: {error_msg}")
 
             # Publica evento de falha
             if self.event_bus:

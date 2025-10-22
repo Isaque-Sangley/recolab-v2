@@ -24,7 +24,7 @@ async def lifespan(app: FastAPI):
 
     Executa código no startup e shutdown da aplicação.
     """
-    # Startup
+    
     print("🚀 Starting RecoLab API...")
 
     # Inicializa banco de dados
@@ -33,19 +33,19 @@ async def lifespan(app: FastAPI):
     # TODO: Criar tabelas (em produção, usar migrations)
     # await db_config.create_tables()
 
-    print("✅ Database initialized")
-    print("✅ RecoLab API ready!")
+    print("Database initialized")
+    print("RecoLab API ready!")
 
     yield
 
     # Shutdown
-    print("🛑 Shutting down RecoLab API...")
+    print("Shutting down RecoLab API...")
 
     # Fecha conexões do banco
     await db_config.close()
 
-    print("✅ Database connections closed")
-    print("👋 RecoLab API stopped")
+    print("Database connections closed")
+    print("RecoLab API stopped")
 
 
 # Create app

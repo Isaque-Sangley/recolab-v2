@@ -42,7 +42,7 @@ async def create_rating(
     recommendation_service: RecommendationApplicationService = Depends(get_recommendation_service),
 ):
     """
-    ⭐ **CRIAR RATING**
+    **CRIAR RATING**
 
     Cria novo rating (avaliação de usuário para filme).
 
@@ -91,7 +91,7 @@ async def update_rating(
     recommendation_service: RecommendationApplicationService = Depends(get_recommendation_service),
 ):
     """
-    🔄 **ATUALIZAR RATING**
+    **ATUALIZAR RATING**
 
     Atualiza o rating de um usuário para um filme.
 
@@ -136,7 +136,7 @@ async def delete_rating(
     recommendation_service: RecommendationApplicationService = Depends(get_recommendation_service),
 ):
     """
-    🗑️ **DELETAR RATING**
+    **DELETAR RATING**
 
     Remove o rating de um usuário para um filme.
 
@@ -242,7 +242,7 @@ async def get_rating(
 @router.get("/stats/overview")
 async def get_rating_stats(service: RatingApplicationService = Depends(get_rating_service)):
     """
-    📊 **ESTATÍSTICAS GERAIS**
+    **ESTATÍSTICAS GERAIS**
 
     Estatísticas gerais de ratings do sistema.
 

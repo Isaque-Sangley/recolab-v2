@@ -23,7 +23,7 @@ from src.infrastructure.persistence.orm_models import MovieORM, RatingORM, UserO
 
 async def load_movies(data_path: Path, session):
     """Carrega filmes"""
-    print("🎬 Carregando filmes...")
+    print("Carregando filmes...")
 
     movies_df = pd.read_csv(data_path / "movies.csv")
 
@@ -65,14 +65,14 @@ async def load_movies(data_path: Path, session):
             print(f"   {movies_added} filmes processados...")
 
     await session.commit()
-    print(f"✅ {movies_added} filmes carregados!")
+    print(f"{movies_added} filmes carregados!")
 
     return movies_added
 
 
 async def load_ratings(data_path: Path, session, sample_size: int = None):
     """Carrega ratings"""
-    print("⭐ Carregando ratings...")
+    print("Carregando ratings...")
 
     ratings_df = pd.read_csv(data_path / "ratings.csv")
 
@@ -97,7 +97,7 @@ async def load_ratings(data_path: Path, session, sample_size: int = None):
         session.add(user)
 
     await session.flush()
-    print(f"✅ Usuários criados!")
+    print(f"Usuários criados!")
 
     # Carrega ratings
     ratings_added = 0
@@ -118,14 +118,14 @@ async def load_ratings(data_path: Path, session, sample_size: int = None):
             print(f"   {ratings_added} ratings processados...")
 
     await session.commit()
-    print(f"✅ {ratings_added} ratings carregados!")
+    print(f"{ratings_added} ratings carregados!")
 
     return ratings_added
 
 
 async def update_statistics(session):
     """Atualiza estatísticas agregadas"""
-    print("📊 Calculando estatísticas...")
+    print("Calculando estatísticas...")
 
     from sqlalchemy import text
 
@@ -174,12 +174,12 @@ async def update_statistics(session):
     )
 
     await session.commit()
-    print("✅ Estatísticas atualizadas!")
+    print("Estatísticas atualizadas!")
 
 
 async def calculate_favorite_genres(session):
     """Calcula gêneros favoritos dos usuários"""
-    print("🎭 Calculando gêneros favoritos...")
+    print("Calculando gêneros favoritos...")
 
     from collections import Counter
 
@@ -223,7 +223,7 @@ async def calculate_favorite_genres(session):
             print(f"   {updated} usuários processados...")
 
     await session.commit()
-    print(f"✅ Gêneros favoritos calculados para {updated} usuários!")
+    print(f"Gêneros favoritos calculados para {updated} usuários!")
 
 
 async def main():
@@ -237,8 +237,8 @@ async def main():
     data_path = Path("data/ml-latest-small")
 
     if not data_path.exists():
-        print("❌ Dados não encontrados!")
-        print("\n💡 Baixe o MovieLens dataset:")
+        print("Dados não encontrados!")
+        print("\n Baixe o MovieLens dataset:")
         print("   mkdir -p data")
         print("   cd data")
         print("   wget https://files.grouplens.org/datasets/movielens/ml-latest-small.zip")
@@ -246,7 +246,7 @@ async def main():
         print("   cd ..")
         sys.exit(1)
 
-    print(f"📂 Dados encontrados em: {data_path}")
+    print(f"Dados encontrados em: {data_path}")
     print()
 
     # Pergunta sobre sample
@@ -262,7 +262,7 @@ async def main():
     sample_size = sample_sizes.get(choice, 10000)
 
     print()
-    print("🚀 Iniciando carga de dados...")
+    print("Iniciando carga de dados...")
     print()
 
     async for session in get_session():
@@ -290,7 +290,7 @@ async def main():
             break
 
         except Exception as e:
-            print(f"\n❌ Erro: {e}")
+            print(f"\n Erro: {e}")
             raise
 
 

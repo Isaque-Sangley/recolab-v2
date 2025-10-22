@@ -219,7 +219,7 @@ class NeuralCF(BaseRecommendationModel):
         else:
             self.device = torch.device(device)
 
-        print(f"🔧 Using device: {self.device}")
+        print(f"Using device: {self.device}")
 
         self.model: Optional[NCFModel] = None
         self.user_id_map: Dict[int, int] = {}
@@ -243,7 +243,7 @@ class NeuralCF(BaseRecommendationModel):
         Returns:
             Dict com métricas de treinamento
         """
-        print(f"🚀 Training NCF model...")
+        print(f"Training NCF model...")
         print(f"   - Samples: {len(user_ids)}")
         print(f"   - Epochs: {self.epochs}")
         print(f"   - Batch size: {self.batch_size}")
@@ -327,7 +327,7 @@ class NeuralCF(BaseRecommendationModel):
             else:
                 patience_counter += 1
                 if patience_counter >= patience:
-                    print(f"   ⚠️  Early stopping at epoch {epoch+1}")
+                    print(f"Early stopping at epoch {epoch+1}")
                     break
 
         history["epochs_trained"] = epoch + 1
@@ -336,7 +336,7 @@ class NeuralCF(BaseRecommendationModel):
 
         self.is_fitted = True
 
-        print(f"✅ Training complete!")
+        print(f"Training complete!")
         print(f"   - Final loss: {avg_loss:.4f}")
         print(f"   - Best loss: {best_loss:.4f}")
 
@@ -459,7 +459,7 @@ class NeuralCF(BaseRecommendationModel):
         }
 
         torch.save(save_dict, path)
-        print(f"💾 Model saved to {path}")
+        print(f"Model saved to {path}")
 
     def load(self, path: str) -> None:
         """Carrega modelo do disco"""
@@ -490,7 +490,7 @@ class NeuralCF(BaseRecommendationModel):
 
         self.is_fitted = True
 
-        print(f"📂 Model loaded from {path}")
+        print(f"Model loaded from {path}")
 
     def get_model_info(self) -> Dict[str, Any]:
         """Retorna informações sobre o modelo"""

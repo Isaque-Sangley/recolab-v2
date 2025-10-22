@@ -26,7 +26,7 @@ from src.infrastructure.persistence.orm_models import MovieORM, RatingORM
 
 async def load_training_data(session):
     """Carrega dados para treinamento"""
-    print("📚 Carregando dados de treinamento...")
+    print("Carregando dados de treinamento...")
 
     from sqlalchemy import select
 
@@ -35,7 +35,7 @@ async def load_training_data(session):
     ratings = result.scalars().all()
 
     if not ratings:
-        print("❌ Nenhum rating encontrado no banco!")
+        print(" Nenhum rating encontrado no banco!")
         print("   Execute primeiro: python scripts/load_movielens.py")
         sys.exit(1)
 
@@ -46,7 +46,7 @@ async def load_training_data(session):
 
     ratings_df = pd.DataFrame(ratings_data)
 
-    print(f"✅ {len(ratings_df)} ratings carregados")
+    print(f"{len(ratings_df)} ratings carregados")
     print(f"   Usuários: {ratings_df['user_id'].nunique()}")
     print(f"   Filmes: {ratings_df['item_id'].nunique()}")
 
@@ -96,7 +96,7 @@ async def main():
     config = configs.get(choice, configs["1"])
 
     print()
-    print(f"⚙️  Configuração:")
+    print(f"Configuração:")
     print(f"   Estratégia: {config.strategy.value}")
     print(f"   Epochs: {config.ncf_epochs}")
     print(f"   Batch size: {config.ncf_batch_size}")
@@ -116,7 +116,7 @@ async def main():
     trainer = ModelTrainer(event_bus)
 
     # Treina
-    print("🚀 Iniciando treinamento...")
+    print("Iniciando treinamento...")
     print()
 
     version = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -130,7 +130,7 @@ async def main():
         print("  TREINAMENTO CONCLUÍDO!")
         print("=" * 60)
         print()
-        print(f"📊 Métricas:")
+        print(f"Métricas:")
         for metric, value in result.metrics.items():
             if isinstance(value, list):
                 print(f"   {metric}: (lista com {len(value)} valores)")
@@ -139,11 +139,11 @@ async def main():
             else:
                 print(f"   {metric}: {value}")
         print()
-        print(f"⏱️  Tempo: {result.training_duration:.2f}s")
+        print(f"Tempo: {result.training_duration:.2f}s")
         print()
 
         # Salva modelo
-        print("💾 Salvando modelo...")
+        print("Salvando modelo...")
 
         async for session in get_session():
             model_repo = ModelRepository(session, models_path="models")
@@ -167,7 +167,7 @@ async def main():
             # COMMIT para persistir champion
             await session.commit()
 
-            print(f"✅ Modelo salvo e promovido para CHAMPION!")
+            print(f"Modelo salvo e promovido para CHAMPION!")
             print(f"   Versão: {version}")
 
             break
@@ -176,7 +176,7 @@ async def main():
         print("=" * 60)
         print("  TREINAMENTO FALHOU!")
         print("=" * 60)
-        print(f"\n❌ Erro: {result.error_message}")
+        print(f"\n Erro: {result.error_message}")
 
 
 if __name__ == "__main__":

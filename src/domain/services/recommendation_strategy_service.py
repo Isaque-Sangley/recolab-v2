@@ -92,7 +92,7 @@ class RecommendationStrategyService:
                 metadata={"n_ratings": n_ratings, "user_type": "cold_start"},
             )
 
-        # Usuário muito novo - usa gêneros se disponíveis
+        # Usuário muito novo, usa gêneros se disponíveis
         if n_ratings < self.NEW_USER_THRESHOLD:
             has_genres = len(user.favorite_genres) > 0
 

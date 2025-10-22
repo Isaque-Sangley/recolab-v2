@@ -119,7 +119,6 @@ class CreateRatingCommand:
             avg_rating = sum(float(r.score) for r in ratings) / len(ratings)
 
             # Extrai gêneros favoritos (simplificado - precisaria dos movies)
-            # Por ora, deixa como está
 
             # Atualiza user
             user.n_ratings = len(ratings)

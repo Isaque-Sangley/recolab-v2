@@ -266,5 +266,5 @@ class DiversityService:
             return recommendations
 
         # Caso contrário, precisa ajustar
-        # (implementação completa seria mais complexa)
+        # (implementação completa > mais complexa)
         return recommendations

@@ -118,8 +118,8 @@ class UserProfileService:
         - Retorna top N
         """
         # Nota: Esta implementação é simplificada
-        # Na prática, precisaria buscar genres dos movies dos ratings
-        # Por ora, retorna lista vazia (será implementado na Application layer)
+        # Na prática, seria melhor buscar genres dos movies dos ratings
+        # Por enquanto, retorna lista vazia (vai ser implementado na Application layer)
         return []
 
     def _calculate_genre_affinity(self, ratings: List[Rating]) -> Dict[str, float]:
@@ -131,7 +131,7 @@ class UserProfileService:
         - Normalizado 0-1
         """
         # Implementação simplificada
-        # Será expandido na Application layer com acesso a movies
+        # Vai ser expandido na Application layer com acesso a movies
         return {}
 
     def _calculate_rating_distribution(self, ratings: List[Rating]) -> Dict[int, int]:

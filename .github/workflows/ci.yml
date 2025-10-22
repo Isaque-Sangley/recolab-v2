@@ -98,12 +98,12 @@ jobs:
       with:
         python-version: '3.11'
     
-    - name: 🔒 Run security checks (Bandit)
+    - name: Run security checks (Bandit)
       run: |
         pip install bandit
         bandit -r src/ -f json -o bandit-report.json || true
     
-    - name: 📤 Upload security report
+    - name: Upload security report
       uses: actions/upload-artifact@v4
       if: always()
       with:
@@ -119,10 +119,10 @@ jobs:
     steps:
     - name: All checks passed
       if: ${{ needs.test.result == 'success' && needs.lint.result == 'success' }}
-      run: echo "✅ All checks passed successfully!"
+      run: echo "All checks passed successfully!"
     
     - name: Some checks failed
       if: ${{ needs.test.result != 'success' || needs.lint.result != 'success' }}
       run: |
-        echo "❌ Some checks failed!"
+        echo "Some checks failed!"
         exit 1

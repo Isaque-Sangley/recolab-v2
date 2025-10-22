@@ -19,7 +19,7 @@ Arquitetura:
 │  │   - users           │   │
 │  │   - movies          │   │
 │  │   - ratings         │   │
-│  │   - recommendations │   │ ← Você está aqui
+│  │   - recommendations │   │ (Atual) aqui
 │  └──────────┬──────────┘   │
 │             │               │
 │  ┌──────────▼──────────┐   │

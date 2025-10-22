@@ -1,7 +1,7 @@
 """
 Recommendations Router
 
-Endpoints de recomendação - o coração do sistema! 🎯
+Endpoints de recomendação - coração do sistema!
 """
 
 from typing import List, Optional
@@ -58,7 +58,7 @@ async def get_recommendations(
     service: RecommendationApplicationService = Depends(get_recommendation_service),
 ):
     """
-        🎯 **GERADOR DE RECOMENDAÇÕES** - O endpoint principal!
+        **GERADOR DE RECOMENDAÇÕES** - O endpoint principal!
 
         Pipeline completo:
         1. Análise de perfil do usuário

@@ -21,11 +21,11 @@ if __name__ == "__main__":
     print("💚 Health: http://localhost:8000/health")
     print()
     
-    # CORRIJA ESTA PARTE:
+    
     uvicorn.run(
         "src.presentation.main:app",  # ← String import (não objeto)
         host="0.0.0.0",
         port=8000,
-        reload=False,  # ← Desliga reload no Windows por enquanto
+        reload=False,  # Desligando reload no Windows por enquanto
         log_level="info"
     )
