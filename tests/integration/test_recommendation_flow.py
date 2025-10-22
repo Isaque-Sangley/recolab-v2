@@ -11,10 +11,10 @@ import pytest
 
 from src.domain.entities import Movie, User
 from src.domain.services import RecommendationStrategyService
+from src.domain.services.recommendation_strategy_service import StrategyType
 from src.domain.value_objects import MovieId, Timestamp, UserId
 from src.infrastructure.persistence.movie_repository import MovieRepository
 from src.infrastructure.persistence.user_repository import UserRepository
-from src.domain.services.recommendation_strategy_service import StrategyType
 
 # SKIP se não tiver PostgreSQL
 pytestmark = [

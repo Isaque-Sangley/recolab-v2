@@ -12,14 +12,14 @@ psycopg2-binary==2.9.9
 
 # ML & Data Science
 torch==2.4.1
-numpy==1.24.3
-pandas==2.0.2
-scikit-learn==1.4.0
-scipy==1.11.4
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.4.2
+scipy==1.13.0
 
 # Utilities
-joblib==1.2.0
-python-dateutil==2.8.2
+joblib==1.4.2
+python-dateutil==2.9.0
 
 # Development
 pytest==7.4.4
